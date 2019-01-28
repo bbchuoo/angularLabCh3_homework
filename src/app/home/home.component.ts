@@ -8,31 +8,31 @@ import { AppService } from '../app.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent  implements OnInit {
-  form : FormGroup;
-  userId='';
-  title='';
-  completed='';
-  constructor(private router: Router,private fb: FormBuilder,private appService:AppService) { 
-    this.form = this.fb.group({　
-      userId: ['', [Validators.required, Validators.minLength(6)]], 
-      completed: ['', [Validators.required]], 
-      title: ['', [Validators.required]], 
+export class HomeComponent implements OnInit {
+  form: FormGroup;
+  userId = '';
+  title = '';
+  completed = '';
+  constructor(private router: Router, private fb: FormBuilder, private appService: AppService) {
+    this.form = this.fb.group({
+      userId: ['', [Validators.required, Validators.minLength(6)]],
+      completed: ['', [Validators.required]],
+      title: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(){
+  ngOnInit() {
   }
 
-  btnClick () {
-    const obj = {'userId' :this.userId ,'completed':this.completed, 'title':this.title};
+  btnClick() {
+    const obj = { 'userId': this.userId, 'completed': this.completed, 'title': this.title };
     this.appService.getUserDate(obj);
     this.router.navigate(['/completed']);
-}
+  }
 
-reset() {
-  this.form.reset(); //使用formGroup提供的reset方法:重置FormGroup
-}
+  reset() {
+    this.form.reset(); // 使用formGroup提供的reset方法:重置FormGroup
+  }
 
 
 }

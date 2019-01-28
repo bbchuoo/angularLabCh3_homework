@@ -8,16 +8,15 @@ export class AppService {
   ApiUrl = 'https://jsonplaceholder.typicode.com';
   data;
   userData;
-  constructor(private HttpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getUserDate(x) {
-    console.log("AppService x===", x)
     this.data = x;
     this.postPosts();
   }
 
   postPosts() {
-    return this.HttpClient.post(this.ApiUrl + '/posts',this.data)
+    return this.http.post(this.ApiUrl + '/posts', this.data);
   }
 
 }

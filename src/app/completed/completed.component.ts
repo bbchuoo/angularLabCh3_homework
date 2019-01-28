@@ -9,20 +9,20 @@ import { Router } from '@angular/router';
 })
 export class CompletedComponent implements OnInit {
 
-  constructor(private appService:AppService,private router: Router) { }
-  posts
+  constructor(private appService: AppService, private router: Router) { }
+  posts;
   ngOnInit() {
     this.postPosts();
   }
 
   postPosts() {
     return this.appService.postPosts()
-    .subscribe((x) => {
-      this.posts=x;
-    })
+      .subscribe((x) => {
+        this.posts = x;
+      });
   }
 
-  btnClick(){
+  btnClick() {
     this.router.navigate(['']);
   }
 
